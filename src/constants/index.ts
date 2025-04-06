@@ -73,3 +73,11 @@ export const shop = [
     alt: "KENDO T-SHIRT",
   },
 ];
+
+export const headerItems = [
+  { title: "Home", link: "/" },
+  { title: "Works", link: "/" },
+  { title: "Stories & Comics", link: "/" },
+  { title: "Shop", link: "/" },
+  { title: "About", link: "/" },
+];
