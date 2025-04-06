@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { Quicksand } from "next/font/google";
 import "@/assets/globals.css";
-import Header from "@/components/Header";
 
 const QuickSandFont = Quicksand({
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -21,7 +20,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${QuickSandFont.className} antialiased`}>
-        <Header />
         {children}
         {/* put Footer here */}
       </body>
