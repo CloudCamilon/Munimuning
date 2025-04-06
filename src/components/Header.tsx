@@ -16,16 +16,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
-type HeaderItem = "Home" | "Works" | "Stories & Comics" | "Shop" | "About";
-
-const HeaderItems = [
-  { title: "Home", link: "/" },
-  { title: "Works", link: "/" },
-  { title: "Stories & Comics", link: "/" },
-  { title: "Shop", link: "/" },
-  { title: "About", link: "/" },
-];
+import { headerItems } from "@/constants";
+import { THeaderItem } from "@/models/header";
+import { cn } from "@/lib/utils";
 
 const HeaderItem = ({
   title,
@@ -39,11 +32,9 @@ const HeaderItem = ({
   return (
     <Link href={link}>
       <div
-        className={`
-          font-semibold
-         text-black
-           text-sm
-           ${selected ? "font-bold underline" : "font-normal"} cursor-pointer`}
+        className={cn("font-normal cursor-pointer text-sm", {
+          "font-bold underline": selected,
+        })}
       >
         {title}
       </div>
@@ -51,7 +42,7 @@ const HeaderItem = ({
   );
 };
 
-export default function Header({ selected }: { selected: HeaderItem }) {
+export default function Header({ selected }: { selected: THeaderItem }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State to manage dropdown visibility
 
   return (
@@ -67,9 +58,9 @@ export default function Header({ selected }: { selected: HeaderItem }) {
             />
           </div>
           <DropdownMenuTrigger>
-            <div className=" md:hidden w-full flex justify-end">
+            <div className="md:hidden w-full flex justify-end">
               <Image
-                className="md:hidden"
+                className="md:hidden hover:cursor-pointer"
                 src={"./menu.svg"}
                 alt={"Menu Logo"}
                 width={24}
@@ -80,7 +71,7 @@ export default function Header({ selected }: { selected: HeaderItem }) {
           </DropdownMenuTrigger>
 
           <div className="hidden md:flex flex-wrap flex-row gap-6">
-            {HeaderItems.map((item, index) => (
+            {headerItems.map((item, index) => (
               <HeaderItem
                 key={index}
                 title={item.title}
@@ -91,7 +82,7 @@ export default function Header({ selected }: { selected: HeaderItem }) {
           </div>
         </div>
         <DropdownMenuContent className="w-screen mt-7.5 text-center border-0 rounded-none">
-          {HeaderItems.map((item, index) => (
+          {headerItems.map((item, index) => (
             <DropdownMenuItem
               className="text-center justify-center"
               key={index}

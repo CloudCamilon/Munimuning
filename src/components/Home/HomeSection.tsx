@@ -1,8 +1,15 @@
+/**
+ * Property of B+ Studio.
+ * Reuse as a whole or in part is prohibited without permission.
+ * Created by the B+ Studio Product Engineering Team
+ * authors: @vcamilon || @rjacobo || @abzaguirre
+ */
+
 import React from "react";
 import { Label, LabelPrice, SubLabel, Title } from "../Typography";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { THomeSection, TProducts } from "@/models/Home";
+import { THomeSection, TProducts } from "@/models/home";
 
 const HomeSection = ({ layoutClassName, title, products }: THomeSection) => {
   return (

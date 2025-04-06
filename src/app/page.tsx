@@ -1,9 +1,16 @@
+/**
+ * Property of B+ Studio.
+ * Reuse as a whole or in part is prohibited without permission.
+ * Created by the B+ Studio Product Engineering Team
+ * authors: @vcamilon || @rjacobo || @abzaguirre
+ */
+
 import Header from "@/components/Header";
 import { HeroSection } from "@/components/Home";
 import HomeSection from "@/components/Home/HomeSection";
-import { comics, featuredWorks, shop } from "@/constants/works";
+import { comics, featuredWorks, shop } from "@/constants";
 
-export default function App() {
+export default function Home() {
   return (
     <div className="bg-[#0F0F0F]">
       <Header selected={"Home"} />
