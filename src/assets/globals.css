@@ -3,6 +3,11 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* custom color */
+@theme {
+  --color-purple: #9e6cff;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
