@@ -5,6 +5,7 @@
  * authors: @vcamilon || @rjacobo || @abzaguirre
  */
 
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { HeroSection } from "@/components/Home";
 import HomeSection from "@/components/Home/HomeSection";
@@ -22,6 +23,7 @@ export default function Home() {
         layoutClassName="bg-[#494949]"
       />
       <HomeSection products={shop} title="STORIED & COMICS" />
+      <Footer selected={"Home"} />
     </div>
   );
 }
