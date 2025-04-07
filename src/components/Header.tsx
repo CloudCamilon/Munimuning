@@ -7,8 +7,7 @@
  * authors: @vcamilon || @azaguirre
  */
 
-import Link from "next/link";
-import { JSX, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import {
   DropdownMenu,
@@ -18,29 +17,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { headerItems } from "@/constants";
 import { THeaderItem } from "@/models/header";
-import { cn } from "@/lib/utils";
-
-const HeaderItem = ({
-  title,
-  selected,
-  link,
-}: {
-  title: string;
-  selected?: boolean;
-  link: string;
-}): JSX.Element => {
-  return (
-    <Link href={link}>
-      <div
-        className={cn("font-normal cursor-pointer text-sm", {
-          "font-bold underline": selected,
-        })}
-      >
-        {title}
-      </div>
-    </Link>
-  );
-};
+import { NavigationItem } from "./ui/navigation-item";
 
 export default function Header({ selected }: { selected: THeaderItem }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State to manage dropdown visibility
@@ -72,7 +49,7 @@ export default function Header({ selected }: { selected: THeaderItem }) {
 
           <div className="hidden md:flex flex-wrap flex-row gap-6">
             {headerItems.map((item, index) => (
-              <HeaderItem
+              <NavigationItem
                 key={index}
                 title={item.title}
                 selected={item.title === selected}
@@ -87,7 +64,7 @@ export default function Header({ selected }: { selected: THeaderItem }) {
               className="text-center justify-center"
               key={index}
             >
-              <HeaderItem
+              <NavigationItem
                 key={index}
                 title={item.title}
                 selected={item.title === selected}

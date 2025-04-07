@@ -15,7 +15,7 @@ const HomeSection = ({ layoutClassName, title, products }: THomeSection) => {
   return (
     <div
       className={cn(
-        "min-h-[84vh] py-20 px-10 flex flex-col items-center gap-10",
+        "min-h-[84vh] py-20 px-10 xl:px-20 flex flex-col items-center gap-10",
         layoutClassName
       )}
     >
