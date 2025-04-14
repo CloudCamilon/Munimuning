@@ -2,8 +2,10 @@
  * Property of B+ Studio.
  * Reuse as a whole or in part is prohibited without permission.
  * Created by the B+ Studio Product Engineering Team
- * authors: @vcamilon || @rjacobo || @abzaguirre
+ * authors: @vcamilon || @abzaguirre
  */
+
+import { TProducts } from "@/models/home";
 
 export const featuredWorks = [
   {
@@ -32,18 +34,20 @@ export const featuredWorks = [
   },
 ];
 
-export const comics = [
+export const comics: TProducts[] = [
   {
     title: "Luwá: the Shapeshifter The name in the dark",
     price: "₱300.00",
     src: "/thumbnails/luwa.jpg",
     alt: "Luwá: the Shapeshifter The name in the dark",
+    isComingSoon: true,
   },
   {
     title: "MENTALLY HERE",
     price: "₱300.00",
     src: "/thumbnails/mentally_here.jpg",
     alt: "MENTALLY HERE",
+    isComingSoon: true,
   },
 ];
 
@@ -76,8 +80,8 @@ export const shop = [
 
 export const headerItems = [
   { title: "Home", link: "/" },
-  { title: "Works", link: "/" },
-  { title: "Stories & Comics", link: "/" },
-  { title: "Shop", link: "/" },
-  { title: "About", link: "/" },
+  { title: "Works", link: "/works" },
+  { title: "Stories & Comics", link: "/stories-comics" },
+  { title: "Shop", link: "/shop" },
+  { title: "About", link: "/about" },
 ];

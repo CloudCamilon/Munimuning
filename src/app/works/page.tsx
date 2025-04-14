@@ -5,4 +5,10 @@
  * authors: @vcamilon || @abzaguirre
  */
 
-export type THeaderItem = "Home" | "Works" | "Stories & Comics" | "Shop" | "About";
+import React from "react";
+
+const Works = () => {
+  return <div>Works</div>;
+};
+
+export default Works;
