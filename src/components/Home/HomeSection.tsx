@@ -2,16 +2,32 @@
  * Property of B+ Studio.
  * Reuse as a whole or in part is prohibited without permission.
  * Created by the B+ Studio Product Engineering Team
- * authors: @vcamilon || @rjacobo || @abzaguirre
+ * authors: @vcamilon || @abzaguirre
  */
 
+"use client";
+
 import React from "react";
-import { Label, LabelPrice, SubLabel, Title } from "../Typography";
+import {
+  Section,
+  Description,
+  Title,
+  ButtonLabelLarge,
+  ButtonLabelSmall,
+} from "../Typography";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { THomeSection, TProducts } from "@/models/home";
+import { useRouter } from "next/navigation";
 
-const HomeSection = ({ layoutClassName, title, products }: THomeSection) => {
+const HomeSection = ({
+  layoutClassName,
+  section,
+  products,
+  type,
+}: THomeSection) => {
+  const router = useRouter();
+
   return (
     <div
       className={cn(
@@ -19,14 +35,20 @@ const HomeSection = ({ layoutClassName, title, products }: THomeSection) => {
         layoutClassName
       )}
     >
-      <Title className="text-purple">{title}</Title>
+      <Section
+        className={cn("text-purple", {
+          "text-white": type !== "works",
+        })}
+      >
+        {section}
+      </Section>
 
       <div className="flex gap-10 w-full justify-center lg:flex-nowrap flex-wrap">
         {products.map((item: TProducts, index: number) => {
           return (
             <div
               key={`${item.alt}-${index}`}
-              className="w-[16rem] flex flex-col items-center gap-4"
+              className="w-[16.8rem] flex flex-col items-center gap-4"
             >
               <div className="relative w-full h-[23rem]">
                 <Image
@@ -36,20 +58,51 @@ const HomeSection = ({ layoutClassName, title, products }: THomeSection) => {
                   objectFit="cover"
                 />
               </div>
-              <Label className="px-1 text-center">
+              <Title
+                className={cn("px-1 text-center", {
+                  "text-white": type !== "works",
+                })}
+              >
                 {item.title.toUpperCase()}
-              </Label>
+              </Title>
               {item.category ? (
-                <SubLabel className="text-center">{item.category}</SubLabel>
+                <Description
+                  className={cn("text-center", {
+                    "text-white": type !== "works",
+                  })}
+                >
+                  {item.category}
+                </Description>
               ) : (
-                <LabelPrice className="text-center">{item.price}</LabelPrice>
+                <Description
+                  className={cn("text-center", {
+                    "text-white": type !== "works",
+                  })}
+                >
+                  {item.price}
+                </Description>
+              )}
+
+              {item.isComingSoon && (
+                <div className="border-2 border-[#9E6CFF] p-4 rounded-4xl w-full text-center flex justify-center items-center">
+                  <ButtonLabelSmall className="text-center">
+                    Digital purchase coming soon
+                  </ButtonLabelSmall>
+                </div>
               )}
             </div>
           );
         })}
       </div>
 
-      <SubLabel className="text-center">View all</SubLabel>
+      <ButtonLabelLarge
+        className={cn("text-center", {
+          "text-white": type !== "works",
+        })}
+        onClick={() => router.push(`/${type}`)}
+      >
+        View all
+      </ButtonLabelLarge>
     </div>
   );
 };

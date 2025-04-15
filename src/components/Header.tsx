@@ -16,11 +16,24 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { headerItems } from "@/constants";
-import { THeaderItem } from "@/models/header";
 import { NavigationItem } from "./ui/navigation-item";
+import { usePathname } from "next/navigation";
+import { THeaderItem } from "@/models/header";
 
-export default function Header({ selected }: { selected: THeaderItem }) {
+function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State to manage dropdown visibility
+
+  const pathName = usePathname();
+
+  const headerLink: Record<string, THeaderItem> = {
+    "/": "Home",
+    "/works": "Works",
+    "/stories-comics": "Stories & Comics",
+    "/shop": "Shop",
+    "/about": "About",
+  };
+
+  const selected = headerLink[pathName];
 
   return (
     <div className="relative">
@@ -77,3 +90,5 @@ export default function Header({ selected }: { selected: THeaderItem }) {
     </div>
   );
 }
+
+export default Header;

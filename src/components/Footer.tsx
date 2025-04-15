@@ -17,9 +17,22 @@ import {
 } from "../../public/icons";
 import { headerItems } from "@/constants";
 import { NavigationItem } from "./ui/navigation-item";
+import { usePathname } from "next/navigation";
 import { THeaderItem } from "@/models/header";
 
-export default function Footer({ selected }: { selected: THeaderItem }) {
+export default function Footer() {
+  const pathName = usePathname();
+
+  const headerLink: Record<string, THeaderItem> = {
+    "/": "Home",
+    "/works": "Works",
+    "/stories-comics": "Stories & Comics",
+    "/shop": "Shop",
+    "/about": "About",
+  };
+
+  const selected = headerLink[pathName];
+
   return (
     <div className="flex flex-col bg-white text-xs md:p-10 xl:p-20 px-6 py-8 sm:text-sm w-full">
       <div className="flex flex-col md:flex-row md:justify-between">
