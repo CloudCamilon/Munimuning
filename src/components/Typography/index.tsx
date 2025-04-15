@@ -13,7 +13,7 @@ type TTypography = {
   onClick?: () => void;
 };
 
-export const Section = ({
+export const SectionLabel = ({
   children,
   className,
   onClick,

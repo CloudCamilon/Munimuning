@@ -9,7 +9,7 @@
 
 import React from "react";
 import {
-  Section,
+  SectionLabel,
   Description,
   Title,
   ButtonLabelLarge,
@@ -31,31 +31,32 @@ const HomeSection = ({
   return (
     <div
       className={cn(
-        "min-h-[84vh] py-20 px-10 xl:px-20 flex flex-col items-center gap-10",
+        "flex  items-center flex-col lg:p-20 lg:gap-20 md:gap-10 md:p-10 px-6 py-8 gap-8",
         layoutClassName
       )}
     >
-      <Section
+      <SectionLabel
         className={cn("text-purple", {
           "text-white": type !== "works",
         })}
       >
         {section}
-      </Section>
+      </SectionLabel>
 
-      <div className="flex gap-10 w-full justify-center lg:flex-nowrap flex-wrap">
+      <div className="flex w-full lg:flex-nowrap gap-6 lg:gap-10 justify-start md:justify-center">
         {products.map((item: TProducts, index: number) => {
           return (
             <div
               key={`${item.alt}-${index}`}
-              className="w-[16.8rem] flex flex-col items-center gap-4"
+              className="w-[7.563rem] md:w-[10.25rem] lg:w-[16.875rem] flex flex-col items-center gap-4"
             >
-              <div className="relative w-full h-[23rem]">
+              <div className="relative w-full h-[8.688rem] md:h-[14.122rem] lg:h-[23.25rem]">
                 <Image
                   src={item.src}
                   alt={item.alt}
                   layout="fill"
                   objectFit="cover"
+                  className="rounded-lg"
                 />
               </div>
               <Title
