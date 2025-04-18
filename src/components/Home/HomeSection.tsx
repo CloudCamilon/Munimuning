@@ -28,6 +28,9 @@ const HomeSection = ({
 }: THomeSection) => {
   const router = useRouter();
 
+  const fontVariant = {
+    "text-white": type !== "works",
+  };
   return (
     <div
       className={cn(
@@ -56,33 +59,16 @@ const HomeSection = ({
                   alt={item.alt}
                   layout="fill"
                   objectFit="cover"
-                  className="rounded-lg"
+                  className={cn("rounded-lg", item.className)}
                 />
               </div>
-              <Title
-                className={cn("px-1 text-center", {
-                  "text-white": type !== "works",
-                })}
-              >
+              <Title className={cn("px-1 text-center", fontVariant)}>
                 {item.title.toUpperCase()}
               </Title>
-              {item.category ? (
-                <Description
-                  className={cn("text-center", {
-                    "text-white": type !== "works",
-                  })}
-                >
-                  {item.category}
-                </Description>
-              ) : (
-                <Description
-                  className={cn("text-center", {
-                    "text-white": type !== "works",
-                  })}
-                >
-                  {item.price}
-                </Description>
-              )}
+
+              <Description className={cn("text-center", fontVariant)}>
+                {item.category || item.price}
+              </Description>
 
               {item.isComingSoon && (
                 <div className="border-2 border-[#9E6CFF] p-4 rounded-4xl w-full text-center flex justify-center items-center">

@@ -7,7 +7,7 @@
 
 import { HeroSection } from "@/components/Home";
 import HomeSection from "@/components/Home/HomeSection";
-import { comics, featuredWorks, shop } from "@/constants";
+import { comicsItems, featuredWorks, shopItems } from "@/constants";
 
 export default function Home() {
   return (
@@ -15,13 +15,13 @@ export default function Home() {
       <HeroSection />
       <HomeSection products={featuredWorks} section="Featured" type="works" />
       <HomeSection
-        products={comics}
+        products={comicsItems}
         section="Stories & Comics"
         layoutClassName="bg-[#141517]"
         type="stories-comics"
       />
       <HomeSection
-        products={shop}
+        products={shopItems}
         section="Shop"
         layoutClassName="bg-[#514983]"
         type="shop"
