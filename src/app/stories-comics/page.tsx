@@ -5,10 +5,18 @@
  * authors: @vcamilon || @abzaguirre
  */
 
+import PageSection from "@/components/PageSection";
+import { comicsItems } from "@/constants";
 import React from "react";
 
 const StoriesComics = () => {
-  return <div>StoriesComics</div>;
+  return (
+    <PageSection
+      items={comicsItems}
+      title="Stories & Comics"
+      layoutClassName="bg-[#141517]"
+    />
+  );
 };
 
 export default StoriesComics;

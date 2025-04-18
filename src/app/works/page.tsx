@@ -4,11 +4,20 @@
  * Created by the B+ Studio Product Engineering Team
  * authors: @vcamilon || @abzaguirre
  */
-
 import React from "react";
 
+import { featuredWorks } from "@/constants";
+import PageSection from "@/components/PageSection";
+
 const Works = () => {
-  return <div>Works</div>;
+  return (
+    <PageSection
+      items={featuredWorks}
+      title="WORKS"
+      hasNavBtn
+      navBtnItems={["Illustration & Design", "Stories & Comics", "Fine Art"]}
+    />
+  );
 };
 
 export default Works;
