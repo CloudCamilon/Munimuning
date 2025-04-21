@@ -34,24 +34,25 @@ export const featuredWorks = [
   },
 ];
 
-export const comics: TProducts[] = [
+export const comicsItems: TProducts[] = [
   {
     title: "Luwá: the Shapeshifter The name in the dark",
-    price: "₱300.00",
+    version: "Volume 1",
     src: "/thumbnails/luwa.jpg",
     alt: "Luwá: the Shapeshifter The name in the dark",
+    className: "border-white border-1",
     isComingSoon: true,
   },
   {
     title: "MENTALLY HERE",
-    price: "₱300.00",
+    version: "2025",
     src: "/thumbnails/mentally_here.jpg",
     alt: "MENTALLY HERE",
     isComingSoon: true,
   },
 ];
 
-export const shop = [
+export const shopItems = [
   {
     title: "BARON POP SOCKET",
     price: "₱300.00",
