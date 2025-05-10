@@ -8,7 +8,7 @@
  */
 
 import { useState } from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -41,7 +41,7 @@ function Header() {
         <div className="flex sticky bg-[#FFF] py-5 justify-between z-50 top-0 w-page md:h-[110px] lg:h-[142px] px-6 md:px-10 lg:px-20 items-center">
           <div className="flex">
             <Image
-              src={"./munimuning.svg"}
+              src={"/munimuning.svg"}
               alt={"Munimuning Logo"}
               width={170}
               height={32}
@@ -51,7 +51,7 @@ function Header() {
             <div className="md:hidden w-full flex justify-end">
               <Image
                 className="md:hidden hover:cursor-pointer"
-                src={"./menu.svg"}
+                src={"/menu.svg"}
                 alt={"Menu Logo"}
                 width={24}
                 height={24}

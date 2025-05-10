@@ -5,7 +5,7 @@
  * authors: @vcamilon || @abzaguirre
  */
 
-import Image from "next/image";
+import Image from "next/legacy/image";
 import React from "react";
 
 export const HeroSection = () => {
