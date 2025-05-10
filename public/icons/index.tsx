@@ -10,3 +10,4 @@ export * from "./instagram";
 export * from "./linkedin";
 export * from "./komikultura";
 export * from "./gallery+";
+export * from "./star";
