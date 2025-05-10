@@ -77,7 +77,7 @@ export const ButtonLabelLarge = ({
 }: PropsWithChildren<TTypography>) => {
   return (
     <label
-      className={cn("text-sm text-black font-bold cursor-pointer", className)}
+      className={cn("text-sm text-black font-bold", className)}
       onClick={onClick}
     >
       {children}

@@ -5,10 +5,10 @@
  * authors: @vcamilon || @abzaguirre
  */
 
-import { TProducts } from "./home";
+import { TProduct } from "./home";
 
 export type TPageSection = {
-  items: TProducts[];
+  items: TProduct[];
   title: string;
   hasNavBtn?: boolean;
   navBtnItems?: Array<string>;

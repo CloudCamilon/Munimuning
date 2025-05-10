@@ -8,7 +8,7 @@
  */
 
 import React, { useState } from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { Star } from "../../../public/icons";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";

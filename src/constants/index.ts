@@ -5,7 +5,7 @@
  * authors: @vcamilon || @abzaguirre
  */
 
-import { TProducts } from "@/models/home";
+import { TProduct } from "@/models/home";
 
 export const featuredWorks = [
   {
@@ -34,16 +34,23 @@ export const featuredWorks = [
   },
 ];
 
-export const comicsItems: TProducts[] = [
+export const comicsItems: TProduct[] = [
   {
+    id: "cebecad6-8962-4291-8932-6f4847a06031",
     title: "Luwá: the Shapeshifter The name in the dark",
     version: "Volume 1",
+    year: "2024",
+    description:
+      "Lorem ipsum dolor sit amet consectetur. Massa blandit at neque viverra fusce lacus. Pretium magna turpis scelerisque magna velit erat cursus. Leo fringilla est sit massa in enim tellus leo. ",
+    hasView: true,
+    gallery: ["/gallery/stories-comics/luwa1.jpg", "/gallery/stories-comics/luwa2.jpg"],
     src: "/thumbnails/luwa.jpg",
     alt: "Luwá: the Shapeshifter The name in the dark",
     className: "border-white border-1",
     isComingSoon: true,
   },
   {
+    id: "e078579b-5138-4e33-bf8f-937296da5f20",
     title: "MENTALLY HERE",
     version: "2025",
     src: "/thumbnails/mentally_here.jpg",

@@ -15,9 +15,9 @@ import {
   ButtonLabelLarge,
   ButtonLabelSmall,
 } from "../Typography";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { cn } from "@/lib/utils";
-import { THomeSection, TProducts } from "@/models/home";
+import { THomeSection, TProduct } from "@/models/home";
 import { useRouter } from "next/navigation";
 
 const HomeSection = ({
@@ -31,10 +31,11 @@ const HomeSection = ({
   const fontVariant = {
     "text-white": type !== "works",
   };
+
   return (
     <div
       className={cn(
-        "flex  items-center flex-col lg:p-20 lg:gap-20 md:gap-10 md:p-10 px-6 py-8 gap-8",
+        "flex items-center flex-col lg:p-20 lg:gap-20 md:gap-10 md:p-10 px-6 py-8 gap-8",
         layoutClassName
       )}
     >
@@ -46,8 +47,8 @@ const HomeSection = ({
         {section}
       </SectionLabel>
 
-      <div className="flex w-full lg:flex-nowrap gap-6 lg:gap-10 justify-start md:justify-center">
-        {products.map((item: TProducts, index: number) => {
+      <div className="flex w-full flex-wrap md:flex-nowrap gap-6 lg:gap-10 justify-center">
+        {products.map((item: TProduct, index: number) => {
           return (
             <div
               key={`${item.alt}-${index}`}
@@ -83,7 +84,7 @@ const HomeSection = ({
       </div>
 
       <ButtonLabelLarge
-        className={cn("text-center", {
+        className={cn("text-center cursor-pointer", {
           "text-white": type !== "works",
         })}
         onClick={() => router.push(`/${type}`)}

@@ -5,7 +5,9 @@
  * authors: @vcamilon || @abzaguirre
  */
 
-import Image from "next/image";
+"use client";
+
+import Image from "next/legacy/image";
 import {
   ButtonLabelLarge,
   ButtonLabelSmall,
@@ -13,11 +15,12 @@ import {
   SectionLabel,
   Title,
 } from "../Typography";
-import { TProducts } from "@/models/home";
+import { TProduct } from "@/models/home";
 import { TPageSection } from "@/models/pageSection";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
+import { useCallback } from "react";
 
-// TODO: revisit the layout after finalizing it and if it's still the same with HomeSection delete this.
 const PageSection = ({
   items,
   title,
@@ -25,9 +28,28 @@ const PageSection = ({
   navBtnItems,
   layoutClassName,
 }: TPageSection) => {
+  const router = useRouter();
+
   const fontVariant = {
     "text-white": title !== "WORKS",
   };
+
+  const handleRoutePage = useCallback(
+    (item: TProduct) => {
+      const titleToPath: Record<string, string> = {
+        "Stories & Comics": "stories-comics",
+        Works: "works",
+        Shop: "shop",
+      };
+
+      const path = titleToPath[title] || "";
+
+      if (path && item.id) {
+        router.push(`/${path}/view/${item.id}`);
+      }
+    },
+    [title, router]
+  );
 
   return (
     <div
@@ -39,11 +61,17 @@ const PageSection = ({
       <SectionLabel className="text-purple">{title}</SectionLabel>
       <div className="flex w-full lg:flex-nowrap flex-wrap-reverse gap-6 lg:gap-10 justify-center">
         <div className="flex lg:gap-10 gap-6 w-full justify-center md:flex-nowrap flex-wrap">
-          {items.map((item: TProducts, index: number) => {
+          {items.map((item: TProduct, index: number) => {
             return (
               <div
                 key={`${item.alt}-${index}`}
-                className="w-[7.563rem] md:w-[10.25rem] lg:w-[16.875rem] flex flex-col items-center gap-4"
+                className={cn(
+                  "w-[7.563rem] md:w-[10.25rem] lg:w-[16.875rem] flex flex-col items-center gap-4",
+                  {
+                    "cursor-pointer group": item.hasView,
+                  }
+                )}
+                onClick={() => item.hasView && handleRoutePage(item)}
               >
                 <div className="relative w-full h-[8.688rem] md:h-[14.122rem] lg:h-[23.25rem]">
                   <Image
@@ -54,15 +82,25 @@ const PageSection = ({
                     className={cn("rounded-lg", item.className)}
                   />
                 </div>
-                <Title className={cn("px-1 text-center", fontVariant)}>
+                <Title
+                  className={cn(
+                    "px-1 text-center group-hover:cursor-pointer",
+                    fontVariant
+                  )}
+                >
                   {item.title.toUpperCase()}
                 </Title>
-                <Description className={cn("text-center", fontVariant)}>
+                <Description
+                  className={cn(
+                    "text-center group-hover:cursor-pointer",
+                    fontVariant
+                  )}
+                >
                   {item.category || item.price || item.version}
                 </Description>
                 {item.isComingSoon && (
                   <div className="border-2 border-[#9E6CFF] p-4 rounded-4xl w-full text-center flex justify-center items-center">
-                    <ButtonLabelSmall className="text-center">
+                    <ButtonLabelSmall className="text-center group-hover:cursor-pointer">
                       Digital purchase coming soon
                     </ButtonLabelSmall>
                   </div>
@@ -78,7 +116,7 @@ const PageSection = ({
                 <ButtonLabelLarge
                   key={item}
                   className={cn(
-                    "p-4 border-b-1 w-full flex justify-center border-b-purple",
+                    "p-4 border-b-1 w-full flex justify-center border-b-purple cursor-pointer",
                     {
                       "border-b-0": index === navBtnItems.length - 1,
                     }
