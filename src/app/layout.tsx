@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${QuickSandFont.className} antialiased`}>
-        <Header /> {/** To apply the component to all screens */}
+        <Header /> {/**  To apply the component to all screens */}
         {children}
         <Footer /> {/** To apply the component to all screens */}
       </body>
